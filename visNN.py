@@ -1,35 +1,29 @@
-import graphics
+from graphics import *
 import random
+import math
 
-# create the window
-window = graphics.GraphWin("Snow!", 400, 400)
 
-# set the background to a nice sky blue
-window.setBackground("skyblue")
+inputLayerN=int(input("How many neurons in are in the input layer: "))
+noHiddenLayers=int(input("How many hidden layers: "))
+outputLayerN=int(input("How many neurons in output layer: "))
+window=GraphWin("VisualizeNN", 500, 500)
 
-# make a list of 500 random points
-flakes = []
-for i in range(500):
-    # random  location
-    x = random.randint(0, 400)
-    y = random.randint(0, 400)
-    p = graphics.Point(x, y)
-    # color
-    p.setFill("white")
-    p.draw(window)
-    # add to list
-    flakes.append(p)
+#Build neurons in first layer and line them up
 
-# keep looping forever
+
+newrow=100
+for i in range(inputLayerN):
+  # make the circle in the center
+  circle = Circle(Point(100, newrow), 20)
+
+  # set the circle to a random colors
+  color = color_rgb(random.randint(0, 255),
+                    random.randint(0, 255),
+                    random.randint(0, 255))
+  circle.setFill(color)
+  # draw it
+  circle.draw(window)
+  newrow+=70
+
 while True:
-  # for each flake
-  for f in flakes:
-    # move it down 2 pixels
-    f.move(0, 2)
-    # if it's out of bounds, move it back to 0
-    if f.getY( ) > 399:
-      f.move(0, -400)
-
-
-# close the window
-window.close( )
+  pass
